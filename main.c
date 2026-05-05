@@ -9,7 +9,8 @@
 int main()
 {
     //char *file=loadFile("tests\\testlex.c");
-    char *file=loadFile("tests\\testparser.c");
+    //char *file=loadFile("tests\\testparser.c");
+    char *file=loadFile("tests\\testad.c");
     Token *tokens=tokenize(file);
     //showTokens(tokens);
     parse(tokens);
