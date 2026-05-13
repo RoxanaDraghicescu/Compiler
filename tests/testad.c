@@ -7,10 +7,11 @@ struct S1{
 	int i;
 	double d[2];
 	char x;
+	double m[4];
+	
 	};
 struct S1 p1;
 struct S1 vp[10];
-
 double sum(double x[5],int n){
 	double r;
 	int i;
