@@ -5,6 +5,7 @@ bool canBeScalar(Ret* r){
 	Type* t=&r->type;
 	if(t->n>=0)return false;
 	if(t->tb==TB_VOID)return false;
+	//if(t->tb==TB_STRUCT)return false;
 	return true;
 	}
 

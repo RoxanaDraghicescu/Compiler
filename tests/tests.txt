@@ -1,0 +1,272 @@
+test 1: conditia din if trebuie sa fie de tip scalar (int, double, char sau adresa)
+struct Pct{ int x; int y;};
+struct Pct pt;
+void test(){
+if (pt){}
+}
+
+test 2: conditia din while trebuie sa fie de tip scalar (int, double, char sau adresa)
+struct Pct{ int x; int y;};
+struct Pct pt;
+void test(){
+while (pt){}
+}
+
+test 3: expresia din return trebuie sa fie de tip scalar (int, double, char sau adresa)
+struct Pct{ int x; int y;};
+struct Pct pt;
+int test(){
+return pt;
+}
+
+test 4: instructiunea return dintr-o functie void nu trebuie sa contina o expresie
+void test(){
+return 1;
+}
+
+test 5: instructiunea return dintr-o functie non-void trebuie sa contina o expresie
+int test(){
+return;
+}
+
+test 6: tipul expresiei din return nu poate fi convertit la tipul de return al functiei
+int v[10];
+int test(){
+return v;
+}
+
+test 7: partea stanga a unei expresii de atribuire trebuie sa fie o left-value
+void test(){
+1 = 2;
+}
+
+test 8: partea stanga a unei expresii de atribuire nu poate fi o constanta
+int v[10];
+void test(){
+v = 1;
+}
+
+test 9: partea stanga a unei expresii de atribuire trebuie sa fie de tip scalar (int, double, char sau adresa)
+struct Pct{ int x; int y;};
+int pt[10];
+struct Pct pt2;
+void test(){
+pt = pt2;
+}
+
+test 10: partea dreapta a unei expresii de atribuire trebuie sa fie de tip scalar (int, double, char sau adresa)
+int pt[10];
+int a;
+void test(){
+a = pt;
+}
+
+test 11: tipurile din operatia de OR nu pot fi convertite la un tip comun pentru OR
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a || pt;
+}
+
+test 12: tipurile din operatia de AND nu pot fi convertite la un tip comun pentru AND
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a && pt;
+}
+
+test 13: tipurile din operatia de egalitate nu pot fi convertite la un tip comun pentru egalitate
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a == pt);
+}
+
+test 14: tipurile din operatia de diferenta nu pot fi convertite la un tip comun pentru diferenta
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a != pt);
+}
+
+test 15: tipurile din operatia de comparatie mai mic nu pot fi convertite la un tip comun pentru comparatie
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a < pt);
+}
+
+test 16: tipurile din operatia de comparatie mai mic sau egal nu pot fi convertite la un tip comun pentru comparatie
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a <= pt);
+}
+
+test 17: tipurile din operatia de comparatie mai mare nu pot fi convertite la un tip comun pentru comparatie
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a > pt);
+}
+
+test 18: tipurile din operatia de comparatie mai mare sau egal nu pot fi convertite la un tip comun pentru comparatie
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = (a >= pt);
+}
+
+test 19: tipurile din operatia de adunare nu pot fi convertite la un tip comun pentru adunare
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a + pt;
+}
+
+test 20: tipurile din operatia de scadere nu pot fi convertite la un tip comun pentru scadere
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a - pt;
+}
+
+test 21: tipurile din operatia de inmultire nu pot fi convertite la un tip comun pentru inmultire
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a * pt;
+}
+
+test 22: tipurile din operatia de impartire nu pot fi convertite la un tip comun pentru inmultire
+struct Pct{ int x; int y;};
+struct Pct pt;
+int a;
+void test(){
+a = a / pt;
+}
+
+test 23: nu se pot face casturi la tipul structura
+struct Pct{ int x; int y;};
+int a;
+void test(){
+(struct Pct)a;
+}
+
+test 24: nu se pot face casturi de la tipul structura
+struct Pct{ int x; int y;};
+struct Pct pt;
+void test(){
+(int)pt;
+}
+
+test 25: casturile pot fi facute doar intre tipuri scalare sau intre tipuri de pointer (array)
+int a;
+int v[10];
+void test(){
+a = (int)v;
+}
+
+test 26: casturile de la tipuri scalare la tipuri de pointer (array) nu sunt permise
+int a;
+void test(){
+(int[])a;
+}
+
+test 27: operatorul unar - poate fi aplicat doar pe tipuri scalare (int, double, char sau adresa)
+int pt[10];
+int a;
+void test(){
+a = -pt;
+}
+
+test 28: operatorul unar ! poate fi aplicat doar pe tipuri scalare (int, double, char sau adresa)
+int pt[10];
+int a;
+void test(){
+a = !pt;
+}
+
+test 29: doar tipurile de array pot fi indexate cu [ ]
+int a;
+void test(){
+a[1] = 2;
+}
+
+test 30: indexul din expresia de indexare trebuie sa fie de tip int sau de un tip care poate fi convertit la int
+int v[10];
+struct Pct{ int x; int y;};
+struct Pct pt;
+void test(){
+v[pt] = 1;
+}
+
+test 31: doar tipurile structura pot fi accesate cu . pentru campurile lor
+int a;
+void test(){
+a.x = 1;
+}
+
+test 32: structura Pct nu are un camp numit z
+struct Pct{ int x; int y;};
+struct Pct pt;
+void test(){
+pt.z = 1;
+}
+
+test 33: undefined id: variabila_inexistenta
+void test(){
+variabila_inexistenta = 1;
+}
+
+test 34: simbolul a nu este o functie si nu poate fi apelat
+int a;
+void test(){
+a();
+}
+
+test 35: prea multi argumente in apelul functiei f
+void f(int x){}
+void test(){
+f(1, 2);
+}
+
+test 36: prea putine argumente in apelul functiei f
+void f(int x){}
+void test(){
+f();
+}
+
+test 37: tipul primului argument din apelul functiei f nu poate fi convertit la tipul primului parametru al functiei
+struct Pct{ int x; int y;};
+struct Pct pt;
+void f(int x){}
+void test(){
+f(pt);
+}
+
+test 38: tipul unui argument din apelul functiei f nu poate fi convertit la tipul parametrului corespunzator al functiei
+struct Pct{ int x; int y;};
+struct Pct pt;
+void f(int x, int y){}
+void test(){
+f(1, pt);
+}
+
+test 39: simbolul f este o functie si trebuie apelat cu ( )
+void f(){}
+int a;
+void test(){
+a = f;
+}
