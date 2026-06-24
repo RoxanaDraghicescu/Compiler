@@ -369,7 +369,7 @@ bool exprAssign(Ret *r){
                 if(!convTo(&r->type,&rDst.type)) tkerr("the assign source cannot be converted to destination");
                 r->lval=false;
                 r->ct=true;
-				addRVal(&owner->fn.instr,rDst.lval,&rDst.type);
+				addRVal(&owner->fn.instr,r->lval,&r->type);
 				insertConvIfNeeded(lastInstr(owner->fn.instr),&r->type,&rDst.type);
 				switch(rDst.type.tb){
 					case TB_INT:

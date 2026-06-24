@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "utils.h"
 #include "ad.h"
@@ -192,7 +192,7 @@ void run(Instr *IP){
 				break;
 
 			case OP_PUSH_F:
-				printf("PUSH.f\t%g",IP->arg.f);
+				printf("PUSH.f\t%.2f",IP->arg.f);
 				pushf(IP->arg.f);
 				IP=IP->next;
 				break;
@@ -200,14 +200,14 @@ void run(Instr *IP){
 				fTop=popf();
 				fBefore=popf();
 				pushf(fBefore+fTop);
-				printf("ADD.f\t// %g+%g -> %g",fBefore,fTop,fBefore+fTop);
+				printf("ADD.f\t// %.2f+%.2f -> %.2f",fBefore,fTop,fBefore+fTop);
 				IP=IP->next;
 				break;
 			case OP_LESS_F:
 				fTop=popf();
 				fBefore=popf();
 				pushi(fBefore<fTop);
-				printf("LESS.f\t// %g<%g -> %d",fBefore,fTop,fBefore<fTop);
+				printf("LESS.f\t// %.2f<%.2f -> %d",fBefore,fTop,fBefore<fTop);
 				IP=IP->next;
 				break;
 				// added for code generation
@@ -276,7 +276,7 @@ void run(Instr *IP){
 	}
 
 
-The program implements the following AtomC source code:
+/*The program implements the following AtomC source code:
 f(2.0);
 void f(double n){      // stack frame: n[-2] ret[-1] oldFP[0] i[1]
 	double i=0.0;
@@ -284,7 +284,7 @@ void f(double n){      // stack frame: n[-2] ret[-1] oldFP[0] i[1]
 		put_d(i);
 		i=i+0.5;
 	}
-}
+}*/
 
 
 Instr *genTestProgramDouble(){
@@ -317,11 +317,11 @@ Instr *genTestProgramDouble(){
 	jfAfter->arg.instr=addInstrWithInt(&code,OP_RET_VOID,1);
 	return code;
 	}
-*/
 
 
 
-#include <stdio.h>
+
+/*#include <stdio.h>
 #include <stdlib.h>
 
 #include "utils.h"
@@ -580,7 +580,7 @@ void run(Instr *IP){
 		}
 	}
 
-/* The program implements the following AtomC source code:
+The program implements the following AtomC source code:
 f(2);
 void f(int n){		// stack frame: n[-2] ret[-1] oldFP[0] i[1]
 	int i=0;
@@ -589,7 +589,7 @@ void f(int n){		// stack frame: n[-2] ret[-1] oldFP[0] i[1]
 		i=i+1;
 		}
 	}
-*/
+
 Instr *genTestProgram(){
 	Instr *code=NULL;
 	addInstrWithInt(&code,OP_PUSH_I,2);
@@ -619,4 +619,4 @@ Instr *genTestProgram(){
 	// returns from function
 	jfAfter->arg.instr=addInstrWithInt(&code,OP_RET_VOID,1);
 	return code;
-	}
+	}*/

@@ -27,7 +27,7 @@ int main()
     Instr *testCode=genTestProgramDouble();
     run(testCode);
     dropDomain();*/
-
+    
     char *file=loadFile("tests\\testgc.c");
     Token *tokens=tokenize(file);
     parse(tokens);

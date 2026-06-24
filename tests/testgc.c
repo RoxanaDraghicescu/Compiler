@@ -1,14 +1,14 @@
 // implementare recursiva pentru factorial
-int fact(int n){
+int fact(int n){                                  
 	if(n<3)return n;
 	return n*fact(n-1);
 	}
 
 void main(){
 	put_i(4.9);		// se afiseaza 4
-	
-	put_i(fact(3));	// se afiseaza 6
-
+	                                                                          //cadrul functiei main 
+	put_i(fact(3));	// se afiseaza 6                                                ret   oldFP    r    i
+                                                                              //    -1       0    1    2
 	// implementare nerecursiva pentru factorial
 	int r;
 	r=1;
